@@ -3,45 +3,68 @@
   <head>
     <style>
       body {
-        background-color: black;
-        color: white;
+        background-color: #111;
+        color: #ddd;
         font-family: Arial;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
       }
-      h1 { color: #9e2a2a; }
-      a { color: gray; }
+      h1 {
+        color: #9e2a2a;
+        text-align: center;
+        border-bottom: 2px solid #9e2a2a;
+        padding-bottom: 10px;
+      }
+      h2 { color: white; }
+      .articulo {
+        border: 1px solid #333;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #1a1a1a;
+      }
+      .articulo h3 { color: white; margin: 0 0 5px 0; }
+      .fecha { color: gray; font-size: 12px; }
+      a { color: #9e2a2a; }
+      footer {
+        text-align: center;
+        color: gray;
+        font-size: 12px;
+        margin-top: 40px;
+        border-top: 1px solid #333;
+        padding-top: 10px;
+      }
     </style>
   </head>
   <body>
 
     <h1>WikiLeaks</h1>
-    <p>We open governments.</p>
-
-    <hr>
+    <p style="text-align:center; color:gray;">We open governments.</p>
 
     <h2>Latest Leaks</h2>
 
-    <h3>Document 1: Secret Government Files</h3>
-    <p>Published: 2024-01-15</p>
-    <p>This document reveals classified information about...</p>
-    <a href="#">Read more</a>
+    <div class="articulo">
+      <h3>Document 1: Secret Government Files</h3>
+      <p class="fecha">Published: 2024-01-15</p>
+      <p>This document reveals classified information about...</p>
+      <a href="#">Read more</a>
+    </div>
 
-    <br><br>
+    <div class="articulo">
+      <h3>Document 2: Corporate Emails Exposed</h3>
+      <p class="fecha">Published: 2024-01-10</p>
+      <p>Internal emails from major corporations showing...</p>
+      <a href="#">Read more</a>
+    </div>
 
-    <h3>Document 2: Corporate Emails Exposed</h3>
-    <p>Published: 2024-01-10</p>
-    <p>Internal emails from major corporations showing...</p>
-    <a href="#">Read more</a>
+    <div class="articulo">
+      <h3>Document 3: Military Intelligence Report</h3>
+      <p class="fecha">Published: 2024-01-05</p>
+      <p>Classified military documents obtained from...</p>
+      <a href="#">Read more</a>
+    </div>
 
-    <br><br>
-
-    <h3>Document 3: Military Intelligence Report</h3>
-    <p>Published: 2024-01-05</p>
-    <p>Classified military documents obtained from...</p>
-    <a href="#">Read more</a>
-
-    <hr>
-
-    <p>Contact | About | Submit Documents</p>
+    <footer>Contact | About | Submit Documents</footer>
 
   </body>
 </html>
