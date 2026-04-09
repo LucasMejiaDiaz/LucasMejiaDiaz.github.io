@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Clase antes de vacaciones</title>
+    <title>uso de json</title>
+<link rel="stylesheet" href="https://unpkg.com/mvp.css">
+
     <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body style="color: white;"> 
+
    <div id="contenedor">
      <div class="elemento"> Sección 1</div>
      <div class="elemento"> Sección 2</div>
       <div class="elemento"> Sección 1</div>
      <div class="elemento"> Sección 2</div>
 <div id="encabezado"></div>
+   <button id="miBoton" type="button">Click</button>
+      <button id="MiBoton2">Generar Biografía</button>
+      <button id="btnSinatra">Biografía Frank Sinatra</button>
+
+<div id="resultado"></div>
   <style >
     
-   
+    
 
   </style>
    
@@ -23,42 +32,126 @@
 
   
 <script >
+  // Declaración de una variable 't' que puede cambiar de valor
   let t=1986;
+  // Declaración de una constante 'c' cuyo valor no cambiará
   const c=12;
+  // Muestra el valor de 't' en la consola del navegador
   console.log(t);
+  // Declaración de un objeto JSON guardado en la variable 'p' con información de un libro
   let p={"titulo": "Llano en llamas", "autor": "Juan Rulfo"};  
+  // Muestra el autor del objeto JSON en la consola
   console.log(p.autor);
+  // Función matemática que recibe un número 'a' y devuelve el triple de su valor
   function triplicar(a){
     return 3*a;
   }
 
+  // Crea un nuevo elemento de párrafo <p> en la memoria
   let d=document.createElement("p");
+  // Le asigna el texto "hola" al párrafo creado
   d.textContent="hola";
+ // Busca el elemento con id "encabezado" y le inserta el párrafo 'd' adentro
  document.getElementById("encabezado").appendChild(d);
+// Le aplica un color de fondo naranja directamente al párrafo 'd'
 d.setAttribute("style", "background-color: orange;");
       
+      // Función asíncrona para obtener datos de un archivo JSON local
       async function obtenerJSON() {
+  // Pide el archivo 'archivo.json' a tu computadora/servidor
   const respuesta = await fetch('archivo.json');  
+  // Convierte la respuesta recibida a un formato JSON utilizable en JavaScript
   const datos = await respuesta.json();
+  // Muestra los datos obtenidos en la consola
   console.log(datos);
+  // Crea un elemento de título <h2>
   let etiquetaTitulo = document.createElement("h2");
+  // Le asigna al <h2> el valor "titulo" extraído del JSON local
   etiquetaTitulo.textContent = datos.titulo; 
+  // Agrega el <h2> creado dentro del elemento con id "contenedor"
   document.getElementById("contenedor").appendChild(etiquetaTitulo);
 
 }
+// Función asíncrona para obtener datos de una API externa (libros)
 async function linkJSON() {
+    // Hace una petición a la API de OpenLibrary buscando libros publicados entre 1500-1600
     const respuesta = await fetch('http://openlibrary.org/subjects/love.json?published_in=1500-1600');
+    // Convierte la respuesta de la API a formato JSON
     const datos = await respuesta.json();
+    // Extrae el primer libro de la lista "works" devuelta por la API
     const libro = datos.works[0]; 
 
+    // Crea un elemento de título <h2>
     let h2 = document.createElement("h2");
+    // Le asigna al <h2> el título del libro obtenido de la API
     h2.textContent = libro.title;
+    // Agrega este <h2> dentro del elemento con id "contenedor"
     document.getElementById("contenedor").appendChild(h2);
 }
+// Función asíncrona para mostrar la biografía de un artista
+async function mostrarBiografia() {
+    // 1. Descargamos los datos haciendo petición a TheAudioDB
+    const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/2/search.php?s=Coldplay');
+    // Convertimos esa respuesta a formato JSON
+    const datos = await respuesta.json();
+    // Accedemos al primer artista del arreglo 'artists' devuelto por la API
+    const artista = datos.artists[0];
 
+    // 2. Preparamos el lugar donde va a aparecer todo buscando el id "resultado"
+    const contenedor = document.getElementById("resultado");
+
+    // 3. Fabricamos la imagen creando la etiqueta <img>
+    let img = document.createElement("img");
+    // Le asignamos a la imagen la URL que viene en el JSON (strArtistThumb)
+    img.src = artista.strArtistThumb;
+
+    // 4. Fabricamos el texto de la biografía creando la etiqueta <p>
+    let pBio = document.createElement("p");
+    // Le asignamos el texto de la biografía en español que viene en el JSON
+    pBio.textContent = artista.strBiographyES;
+
+    // 5. Los pegamos en la página insertándolos dentro del div "resultado"
+    contenedor.appendChild(img);
+    contenedor.appendChild(pBio);
+}
+async function mostrarSinatra() {
+      // 1. Descargamos los datos de Frank Sinatra
+      const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/123/search.php?s=frank+sinatra');
+      const datos = await respuesta.json();
+      const artista = datos.artists[0];
+
+      // 2. Preparamos el contenedor
+      const contenedor = document.getElementById("resultado");
+
+      // 3. Fabricamos la imagen
+      let img = document.createElement("img");
+      img.src = artista.strArtistThumb;
+
+      // 4. Fabricamos el texto (usando español, o inglés si no hay)
+      let pBio = document.createElement("p");
+      pBio.textContent = artista.strBiographyES || artista.strBiographyEN;
+
+      // 5. Los pegamos en la página
+      contenedor.appendChild(img);
+      contenedor.appendChild(pBio);
+  }
+
+// Llama a la función linkJSON inmediatamente cuando la página termina de leer esta línea
 linkJSON();
+// Llama a la función obtenerJSON inmediatamente después
 obtenerJSON();
+// Busca el botón con id "miBoton" y lo guarda en la variable 'boton'
+let boton = document.getElementById("miBoton");
+  // Le agrega un evento para que al hacer "click", ejecute la función linkJSON
+  boton.addEventListener("click", linkJSON);
 
+// Busca el botón con id "MiBoton2" y lo guarda en la variable 'button'
+let button = document.getElementById("MiBoton2");
+  // Le agrega un evento para que al hacer "click", ejecute la función mostrarBiografia
+  button.addEventListener("click",mostrarBiografia)
+// BUSCA EL NUEVO BOTÓN "btnSinatra" Y LE AGREGA EL EVENTO DE CLICK (Frank Sinatra)
+  let botonSinatra = document.getElementById("btnSinatra");
+  botonSinatra.addEventListener("click", mostrarSinatra); 
 </script>
 
 
