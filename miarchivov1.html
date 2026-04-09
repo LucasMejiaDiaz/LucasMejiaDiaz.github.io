@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clase antes de vacaciones</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body style="color: white;"> 
+   <div id="contenedor">
+     <div class="elemento"> Sección 1</div>
+     <div class="elemento"> Sección 2</div>
+      <div class="elemento"> Sección 1</div>
+     <div class="elemento"> Sección 2</div>
+<div id="encabezado"></div>
+  <style >
+    
+   
+
+  </style>
+   
+   
+
+  
+
+  
+<script >
+  let t=1986;
+  const c=12;
+  console.log(t);
+  let p={"titulo": "Llano en llamas", "autor": "Juan Rulfo"};  
+  console.log(p.autor);
+  function triplicar(a){
+    return 3*a;
+  }
+
+  let d=document.createElement("p");
+  d.textContent="hola";
+ document.getElementById("encabezado").appendChild(d);
+d.setAttribute("style", "background-color: orange;");
+      
+      async function obtenerJSON() {
+  const respuesta = await fetch('archivo.json');  
+  const datos = await respuesta.json();
+  console.log(datos);
+  let etiquetaTitulo = document.createElement("h2");
+  etiquetaTitulo.textContent = datos.titulo; 
+  document.getElementById("contenedor").appendChild(etiquetaTitulo);
+
+}
+async function linkJSON() {
+    const respuesta = await fetch('http://openlibrary.org/subjects/love.json?published_in=1500-1600');
+    const datos = await respuesta.json();
+    const libro = datos.works[0]; 
+
+    let h2 = document.createElement("h2");
+    h2.textContent = libro.title;
+    document.getElementById("contenedor").appendChild(h2);
+}
+
+linkJSON();
+obtenerJSON();
+
+</script>
+
+
+
+</body>
+</html>

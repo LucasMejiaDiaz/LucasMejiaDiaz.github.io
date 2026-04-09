@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>PAGINA FEA</title>
+    <style>
+        body {
+            background-color: palevioletred;
+            color: greenyellow;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;      
+            border: 20px solid yellow; /* Le agregué "solid" para que el borde sí se vea */
+        }
+        h1 {
+            background-color: brown;
+            border: 20px solid orange; /* Le agregué "solid" */
+            text-decoration: underline overline;
+            font-size: 50px;
+            text-align: center;
+        }
+        /* Esto es lo que agregué para que funcione tu ejemplo del Box Model */
+        .box-model-example {
+            border: 5px solid red;
+            padding: 20px;
+            margin: 20px;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body> <h1>contestado las preguntas en la pagina mas fea posible</h1>
+    
+    <section>
+        <h2>que es unn html?</h2>
+        <p>Imaginalo como el esqueleto de una casa. No tiene pintura ni muebles, pero define dónde van las paredes y las puertas. Son las piezas de construcción básicas de cualquier página en internet. [Referencia: MDN Web Docs - HTML Basics]</p>
+        
+        <h3>Que es head y body</h3>
+        <p>El <b>Head</b> es como el cerebro: ahí se guardan las ideas y reglas (el título, el idioma) que el usuario no ve directamente. El <b>Body</b> es el cuerpo: todo lo que sí puedes ver y tocar, como los textos e imágenes. [Referencia: W3Schools - HTML head]</p>
+        
+        <h4>etiquetas de estructura</h4>
+        <ul>
+            <li><b>Header:</b> El sombrero o encabezado de la página. </li>
+            <li><b>Section:</b> Un capítulo o sección grande de contenido. </li>
+            <li><b>Article:</b> Una noticia o texto que se explica por sí solo. </li>
+            <li><b>Aside:</b> Una nota al margen, como un chisme extra. </li>
+            <li><b>Footer:</b> Los pies de la página, donde van los contactos. </li>
+        </ul>
+        <p>[Referencia: MDN Web Docs - HTML Semantics]</p>
+
+        <h3>Listas </h3>
+        <p>Lista sin orden (Puntos):</p>
+        <ul>
+            <li>Pizza</li>
+            <li>Tacos</li>
+        </ul>
+        <p>Lista con orden (Números):</p>
+        <ol>
+            <li>Despertar</li>
+            <li>Programar</li>
+        </ol>
+        <p>[Referencia: W3Schools - HTML Lists]</p>
+
+        <h3>Tabla Básica</h3>
+        <table>
+            <tr><th>Nombre</th><th>Hobby</th></tr>
+            <tr><td>Lucas</td><td>Hacer webs feas</td></tr>
+        </table>
+        <p>[Referencia: W3Schools - HTML Tables]</p>
+    </section>
+
+    <section>
+        <h2>2. CSS </h2>
+
+        <h3>¿Qué es y para qué sirve? </h3>
+        <p>Es el maquillaje y la ropa del esqueleto. Sirve para que la página no se vea solo como texto aburrido y le demos colores, tamaños y posiciones. [Referencia: MDN Web Docs - CSS Basics]</p>
+
+        <h3>Cómo aplicar CSS (Las 3 formas) </h3>
+        <ol>
+            <li><b>Externa:</b> Un archivo separado (como un manual de estilo). </li>
+            <li><b>Interna:</b> Escrito arriba en el "Head" (como lo hice en esta página). </li>
+            <li><b>En línea:</b> Escrito directamente dentro de la etiqueta (muy desordenado). </li>
+        </ol>
+        <p>[Referencia: MDN Web Docs - Adding CSS]</p>
+
+        <h3>Selectores y Reglas </h3>
+        <p>Un <b>Selector</b> es a quién le vas a cambiar el look (ej: "todos los títulos"). La <b>Regla</b> es qué le vas a hacer (ej: "ponlos de color verde"). [Referencia: W3Schools - CSS Syntax]</p>
+
+        <h3>Tipos de Selectores</h3>
+        <ul>
+            <li><b>Tag Selector:</b> Selecciona todas las etiquetas iguales (ej. todas las "p" de párrafo).</li>
+            <li><b>Class Selector:</b> Selecciona usando una clase, se escribe con punto (ej. ".mi-clase").</li>
+            <li><b>Tag and Class Selector:</b> Combina ambos, afecta a una etiqueta con una clase específica (ej. "p.mi-clase").</li>
+            <li><b>Id Selector:</b> Selecciona un elemento único usando su ID, se escribe con hashtag (ej. "#mi-id").</li>
+        </ul>
+        <p>[Referencia: MDN Web Docs - CSS Selectors]</p>
+
+        <h3>Juegos (Selector & Flexbox) </h3>
+        <p><b>Done</b> (Ya sé cómo jugar y ganar). [Referencia: Práctica en clase]</p>
+
+        <h3>Clases e IDs </h3>
+        <p>Un <b>ID</b> es como tu CURP o DNI: solo hay uno. Una <b>Clase</b> es como un uniforme: muchos pueden usarlo. En CSS los usamos para decirle a la computadora exactamente a qué parte del texto queremos darle color. [Referencia: W3Schools - CSS Class and ID]</p>
+
+        <h3>CSS Box Model </h3>
+        <p>Todo en la web es una caja. Tiene contenido, un espacio interno (padding), un borde y un espacio por fuera (margin). [Referencia: MDN Web Docs - The box model]</p>
+        <div class="box-model-example">Soy una caja con borde rojo y margen.</div>
+
+        <h3>Media Queries</h3>
+        <p>Son reglas que dicen: "Si la pantalla es chiquita como un celular, cambia el diseño". Sirven para que la web se vea bien en cualquier aparato. [Referencia: W3Schools - CSS Media Queries]</p>
+    </section>
+
+    <section>
+        <h2>3. Layout </h2>
+        <p><b>Flex:</b> Imagina una fila de personas que se acomodan solas si alguien se quita. Es para alinear cosas en una sola dirección. [Referencia: CSS-Tricks - A Complete Guide to Flexbox]</p>
+        <p><b>Grid:</b> Es como una red de pescador o una hoja de Excel. Puedes acomodar cosas arriba, abajo, a la izquierda y derecha al mismo tiempo. [Referencia: CSS-Tricks - A Complete Guide to Grid]</p>
+    </section>
+
+    <section>
+        <h2>4. Retos Finales</h2>
+        <h3>HTML Challenge</h3>
+        <p>Reto: Escribe el código HTML para incrustar un video de YouTube en tu página web sin usar la etiqueta "video". [Referencia: Invento propio]</p>
+        
+        <h3>Wikileaks Clone (Framework CSS)</h3>
+        <p>Aquí está la captura de pantalla de mi página clonada usando un Framework:</p>
+        <img src="foto3.png" alt="Captura de pantalla de Wikileaks" width="400"> 
+        <p>[Referencia: Proyecto personal]</p>
+    </section>
+
+    <footer>
+        <p>Referencias Generales: Todas las respuestas basadas en la guía de actividad FJ 2026 y documentación web. </p>
+    </footer>
+
+</body> </html>
