@@ -72,7 +72,7 @@ d.setAttribute("style", "background-color: orange;");
   document.getElementById("contenedor").appendChild(etiquetaTitulo);
 
 }
-// Función asíncrona para obtener datos de una API externa (libros)
+// Función asíncrona para obtener datos de una API externa 
 async function linkJSON() {
     // Hace una petición a la API de OpenLibrary buscando libros publicados entre 1500-1600
     const respuesta = await fetch('http://openlibrary.org/subjects/love.json?published_in=1500-1600');
