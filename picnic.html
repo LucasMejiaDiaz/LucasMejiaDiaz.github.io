@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi página con Picnic CSS</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
+  <style>
+    .flex.demo {
+      margin: .2em 0;
+      background: #dbe2dc;
+      text-align: center;
+    }
+
+    .flex.demo div {
+      border: .1em solid pink;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #imagen img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    .tabs-container {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="un_boton">Haz algo</button> 
+  <button id="boton_votar" class="warning">¡Me gusta este perro!</button>
+  <button id="boton_ver_votos" class="success">Ver mis votos</button>
+
+  <div class="flex two four-1200 demo">
+    <div id="bio">1</div>
+    <div id="imagen">2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+  </div>
+
+  <div class="tabs-container">
+    <div class="tabs two">
+      <input id='tab-1' type='radio' name='tabgroup' checked />
+      <label for='tab-1' class="pseudo button">Progreso</label>
+
+      <input id='tab-2' type='radio' name='tabgroup' />
+      <label for='tab-2' class="pseudo button">Dificultad</label>
+
+      <div class="row">
+        <div>
+          <h4>1. ¿Cómo vas con tu reto?</h4>
+          <p>bien voy bien ya avance bastante en mi mockup</p>
+        </div>
+
+        <div>
+          <h4>2. ¿Qué te parece lo más complicado?</h4>
+          <p>organizar todas las ideas que tenemos para realizar en la extensión</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let un_boton;
+    let idImagenActual = ""; 
+   
+
+    document.addEventListener("DOMContentLoaded", function() {
+      // Botón Generar Imagen
+      un_boton = document.getElementById("un_boton");
+      un_boton.addEventListener("click", irPorAlgo);
+
+      // Botón Votar
+      const btnVotar = document.getElementById("boton_votar");
+      btnVotar.addEventListener("click", votarPerrito);
+
+      // Botón Ver Votos
+      const btnVerVotos = document.getElementById("boton_ver_votos");
+      btnVerVotos.addEventListener("click", verVotos);
+    });
+
+    async function irPorAlgo() {
+      const contenedorImagen = document.getElementById("imagen");
+      try {
+        const respuesta = await fetch("https://api.thedogapi.com/v1/images/search?limit=1", {
+          method: "GET",
+          headers: { "x-api-key": "live_iOwslXuCsuOnsVAx3IZPzgbOK2LDuNhQGg49lQkiWBpO9ZzTUZnLPXNPx3EaL1Vg" }
+        });
+
+        if (!respuesta.ok) return console.log("Error en la respuesta");
+
+        const data = await respuesta.json();
+        const urlImagen = data[0].url;
+        idImagenActual = data[0].id; // IMPORTANTE: Guardamos el ID para poder votar
+
+        contenedorImagen.innerHTML = `<img src="${urlImagen}" alt="Perrito aleatorio">`;
+        console.log("Imagen cargada ID:", idImagenActual);
+
+      } catch (error) {
+        console.error("Error:", error.message);
+      }
+    }
+
+ async function votarPerrito() {
+  try {
+    const respuesta = await fetch("https://api.thedogapi.com/v1/votes", {
+      method: 'POST', // Cambiado a POST para que acepte el body
+      headers: {
+        'Content-Type': 'application/json', //dericle que es un archivo json
+        'x-api-key': 'live_iOwslXuCsuOnsVAx3IZPzgbOK2LDuNhQGg49lQkiWBpO9ZzTUZnLPXNPx3EaL1Vg' 
+      },
+      body: JSON.stringify({
+        image_id: idImagenActual, // Usamos variable dinámica en lugar de una fija
+        value: 1
+      })
+    });
+    if (!respuesta.ok) {
+      console.log("Error");
+      // throw new Error("Error de algo"); // Mantengo el comentario de tu base
+    }
+    const data = await respuesta.json();
+    console.log(data);
+    
+    if (respuesta.ok) {
+        alert("¡Voto registrado!");
+    }
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
+
+    async function verVotos() {
+      try {
+        const respuesta = await fetch("https://api.thedogapi.com/v1/votes", {
+          method: "GET",
+          headers: { "x-api-key": "live_iOwslXuCsuOnsVAx3IZPzgbOK2LDuNhQGg49lQkiWBpO9ZzTUZnLPXNPx3EaL1Vg" }
+        });
+
+        if (!respuesta.ok) return console.log("Error al obtener votos");
+
+        const data = await respuesta.json();
+        console.log("Tus votos realizados:", data);
+        alert("Has realizado " + data.length + " votos.");
+      } catch (error) {
+        console.error("Error al obtener votos:", error);
+      }
+    }
+  </script>
+</body>
+</html>
