@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 // Ruta del clima
 app.post("/clima", async (req, res) => {
-  const { ciudad } = req.body; // Ya no necesitas req.on("data")
+  const { ciudad } = req.body; 
 
   if (!ciudad) {
     return res.status(400).json({ error: "Debes escribir una ciudad" });
