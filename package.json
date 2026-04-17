@@ -1,16 +1,27 @@
 {
   "name": "lucasmejiadiaz.github.io",
   "version": "1.0.0",
-  "description": "",
-  "main": "archivo.js",
+  "description": "Actividad de API con GET externo y POST en servidor",
+  "main": "server.js",
   "scripts": {
+    "porfa": "node server.js",
+    "start": "node server.js",
+    "imss": "node archivo2.js",
+    "chalk": "node archivo3.js",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LucasMejiaDiaz/LucasMejiaDiaz.github.io.git"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "node",
+    "express",
+    "get",
+    "post"
+  ],
   "author": "",
   "license": "ISC",
   "type": "module",
@@ -19,6 +30,11 @@
   },
   "homepage": "https://github.com/LucasMejiaDiaz/LucasMejiaDiaz.github.io#readme",
   "dependencies": {
-    "chalk": "^5.6.2"
+    "axios": "^1.12.2",
+    "chalk": "^5.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0"
   }
 }
+
