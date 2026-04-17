@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de API</title>
+</head>
+<body>
+  <h1>Consulta de clima</h1>
+
+  <form id="formulario">
+    <input id="ciudad" type="text" placeholder="Escribe una ciudad" required>
+    <button type="submit">Consultar</button>
+  </form>
+
+  <pre id="resultado">Aquí aparecerán los datos.</pre>
+
+  <script>
+    const formulario = document.getElementById("formulario");
+    const resultado = document.getElementById("resultado");
+
+    formulario.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const ciudad = document.getElementById("ciudad").value.trim();
+
+      const respuesta = await fetch("/clima", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ciudad })
+      });
+
+      const data = await respuesta.json();
+      resultado.textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
