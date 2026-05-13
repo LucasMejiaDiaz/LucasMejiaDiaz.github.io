@@ -7,6 +7,7 @@
     "porfa": "node servidor.js",
     "start": "node servidor.js",
     "express": "node servidor_express.js",
+    "params": "node ejercicio12_parametros.js",
     "imss": "node archivo2.js",
     "chalk": "node archivo3.js",
     "server": "node server.js",
