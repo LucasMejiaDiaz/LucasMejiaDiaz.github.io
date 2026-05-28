@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+</head>
+<body>
+    <h1>Lista de ofertas</h1>
+    <!-- Poner guion medio para hacer etiquetas -->
+    <oferta-elemento nombre="Chocolates" >Chocolates gratis</oferta-elemento>  
+    <oferta-elemento nombre="Malteada" >Malteada 2x1</oferta-elemento>  
+    <oferta-elemento nombre="Nieve" >Nieve 2x1</oferta-elemento> 
+
+    <!-- componente para mostrar un video de youtube -->
+    <video-elemento identificador="SUKx0fES3lU"></video-elemento>
+    <video-elemento identificador="VX7oQL4T_mU"></video-elemento>
+
+    <!-- componente para mostrar producto de amazon -->
+     <amazon-elemento imagen="https://m.media-amazon.com/images/I/81Nc5adMqaL._AC_SL1500_.jpg" link="https://a.co/d/04kZxNWF"></amazon-elemento>
+
+    <style>
+        h1 {
+            color: blue;
+        }
+    </style>
+
+</body>
+    <script type="module">
+        import './OfertaElemento.js';
+        import './VideoElemento.js';
+        import './AmazonProducto.js';
+    </script>
+</html>
