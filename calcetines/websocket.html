@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <input id="input" type="text">
+    <button onclick="enviar()">Mensajear</button>
+    <div id="mensajes"></div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onopen = () => {
+            console.log('Conectado al servidor WebSocket');
+            //socket.send('Cyberpunk');
+        };
+
+        socket.onmessage = (event) => {
+            const mensaje = document.createElement('p');
+            mensaje.textContent = "Alguien dijo: " + event.data;
+            document.getElementById('mensajes').appendChild(mensaje);
+        };
+
+        function enviar() {
+            const msg = document.getElementById('input').value;
+            socket.send(msg);
+        }
+    </script>
+</body>
+</html>
