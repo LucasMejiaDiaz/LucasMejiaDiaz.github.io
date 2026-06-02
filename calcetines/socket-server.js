@@ -35,5 +35,5 @@ wss.on('connection', (ws) => {
 });
 
 server.listen(puerto, () => {
-    console.log(`Servidor WebSocket escuchando en ws://localhost:${puerto}`);
+    console.log(`Servidor HTTP y WebSocket escuchando en puerto ${puerto}`);
 });
